@@ -54,3 +54,14 @@ Resumen simple de los cambios realizados en el proyecto y el motivo de cada uno.
   - El metodo `descontar` valida que el repuesto exista, que la cantidad sea positiva y que haya stock suficiente antes de restar.
   - En `Taller.reparar` se captura la excepcion si no hay repuestos o si la energia no alcanza, avisando del problema en lugar de fingir exito.
 - **Por que:** Para evitar que el inventario quede con numeros negativos o se descuenten repuestos inexistentes (cumpliendo las pruebas P3, P4 y P5).
+
+---
+
+### 8. Patron Adapter para `EscanerAntiguo`
+- **Que se hizo:**
+  - Se creo el paquete `randolh.robofix.diagnostico`.
+  - Se creo el modelo `ResultadoDiagnostico` con los datos limpios y organizados.
+  - Se creo la interfaz `ServicioDiagnostico` y la clase adaptadora `AdaptadorEscaner`.
+  - La clase `EscanerAntiguo` se mantuvo 100% intacta sin modificar ninguna linea.
+  - `Taller` ahora usa el adaptador en lugar de llamar directamente al escaner o partir texto con barras (`|`).
+- **Por que:** Para cumplir con el desacoplamiento requerido: si el formato del escaner viejo cambia o viene roto, solo el adaptador se encarga de interpretarlo o avisar del error mediante `DiagnosticoException`, protegiendo el resto de la aplicacion (cumpliendo las pruebas P2 y P12).
