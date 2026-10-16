@@ -36,3 +36,21 @@ Resumen simple de los cambios realizados en el proyecto y el motivo de cada uno.
   - Se agrego `leerEntero` para leer numeros de forma segura.
   - Se agrego un `try-catch` al cambiar la configuracion del robot.
 - **Por que:** Para que el programa no se caiga si el usuario escribe letras en el menu, y para mostrar el mensaje de error conservando los datos anteriores si la configuracion falla.
+
+---
+
+### 6. Patron Singleton en `Inventario`
+- **Que se hizo:**
+  - Se creo el paquete `randolh.robofix.inventario`.
+  - Se hizo privado el constructor de `Inventario` y se creo el metodo `getInstancia()`.
+  - `Taller` ahora obtiene el inventario compartido mediante `Inventario.getInstancia()`.
+- **Por que:** Para que todos los talleres compartan la misma lista de repuestos en lugar de tener inventarios separados y desincronizados.
+
+---
+
+### 7. Validaciones de Stock y `InventarioException`
+- **Que se hizo:**
+  - Se creo la excepcion personalizada `InventarioException`.
+  - El metodo `descontar` valida que el repuesto exista, que la cantidad sea positiva y que haya stock suficiente antes de restar.
+  - En `Taller.reparar` se captura la excepcion si no hay repuestos o si la energia no alcanza, avisando del problema en lugar de fingir exito.
+- **Por que:** Para evitar que el inventario quede con numeros negativos o se descuenten repuestos inexistentes (cumpliendo las pruebas P3, P4 y P5).
