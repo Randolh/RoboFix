@@ -1,6 +1,8 @@
 package randolh.robofix;
 
 import java.util.Scanner;
+import randolh.robofix.excepcion.ConfiguracionRobotException;
+import randolh.robofix.robot.Robot;
 
 public class Main {
 
@@ -25,8 +27,7 @@ public class Main {
             System.out.println("7. Salir");
             System.out.print("Opcion: ");
 
-            opcion = teclado.nextInt();
-            teclado.nextLine();
+            opcion = leerEntero(teclado, "Opcion invalida. Ingrese un numero: ");
 
             switch (opcion) {
                 case 1:
@@ -43,15 +44,18 @@ public class Main {
 
                 case 4:
                     System.out.print("Nueva energia: ");
-                    int energia = teclado.nextInt();
-                    teclado.nextLine();
+                    int energia = leerEntero(teclado, "Debe ingresar un numero entero para la energia: ");
 
                     System.out.print("Nuevo modo: ");
                     String modo = teclado.nextLine();
 
-                    robot.setEnergia(energia);
-                    robot.setModo(modo);
-                    System.out.println("Configuracion actualizada.");
+                    try {
+                        robot.actualizarConfiguracion(energia, modo);
+                        System.out.println("Configuracion actualizada.");
+                    } catch (ConfiguracionRobotException e) {
+                        System.out.println("Error: " + e.getMessage());
+                        System.out.println("Se conserva la configuracion anterior.");
+                    }
                     break;
 
                 case 5:
@@ -76,5 +80,16 @@ public class Main {
         }
 
         teclado.close();
+    }
+
+    private static int leerEntero(Scanner teclado, String mensajeReintento) {
+        while (true) {
+            String entrada = teclado.nextLine().trim();
+            try {
+                return Integer.parseInt(entrada);
+            } catch (NumberFormatException e) {
+                System.out.print(mensajeReintento);
+            }
+        }
     }
 }

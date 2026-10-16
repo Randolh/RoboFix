@@ -1,5 +1,7 @@
 package randolh.robofix;
 
+import randolh.robofix.robot.Robot;
+
 public class Taller {
 
     // Cada taller crea su propio inventario.
