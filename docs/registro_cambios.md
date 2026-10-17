@@ -74,3 +74,13 @@ Resumen simple de los cambios realizados en el proyecto y el motivo de cada uno.
   - Se agregaron las clausulas `throws` correspondientes en las firmas de los metodos.
   - Los llamados en `Taller` y `Main` manejan obligatoriamente estas excepciones en bloques `try-catch`.
 - **Por que:** Para obligar al compilador a exigir el manejo explícito de errores donde se usen estos métodos, garantizando robustez total y evitando que cualquier error pase desapercibido.
+
+---
+
+### 10. Patron Memento para Guardar y Restaurar Configuraciones
+- **Que se hizo:**
+  - Se creo la clase `RobotMemento` en `randolh.robofix.robot` para encapsular de forma inmutable la energia y el modo.
+  - Se agregaron los metodos `guardar()` y `restaurar(memento)` en `Robot`.
+  - Se agregaron las opciones `8. Guardar configuracion` y `9. Restaurar configuracion` en el menu de `Main`.
+  - Se valido que si no existe una copia previa guardada, se informe al usuario en lugar de fallar.
+- **Por que:** Para permitir al usuario crear un punto de respaldo de la configuracion del robot y volver a el en caso de cambios no deseados o errores, sin alterar nunca el codigo ni el nombre del robot (cumpliendo las pruebas P9 y P10).
