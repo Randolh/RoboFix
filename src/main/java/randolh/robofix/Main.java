@@ -39,6 +39,7 @@ public class Main {
             System.out.print("Opcion: ");
 
             opcion = leerEntero(teclado, "Opcion invalida. Ingrese un numero: ");
+            System.out.println();
 
             switch (opcion) {
                 case 1:
@@ -59,6 +60,7 @@ public class Main {
 
                     System.out.print("Nuevo modo: ");
                     String modo = teclado.nextLine();
+                    System.out.println();
 
                     try {
                         robot.actualizarConfiguracion(energia, modo);
@@ -76,7 +78,7 @@ public class Main {
                 case 6:
                     System.out.println("Inventario taller 1:");
                     taller1.mostrarInventario();
-
+                    System.out.println();
                     System.out.println("Inventario taller 2:");
                     taller2.mostrarInventario();
                     break;

@@ -21,7 +21,7 @@ public class Taller {
         try {
             ResultadoDiagnostico datos = servicioDiagnostico.escanear(robot.getCodigo());
 
-            System.out.println("\n--- DIAGNOSTICO ---");
+            System.out.println("--- DIAGNOSTICO ---");
             System.out.println("Robot: " + datos.getCodigoRobot());
             System.out.println("Componente: " + datos.getComponente());
             System.out.println("Estado: " + datos.getEstado());
