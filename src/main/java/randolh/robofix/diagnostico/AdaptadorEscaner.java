@@ -16,7 +16,7 @@ public class AdaptadorEscaner implements ServicioDiagnostico {
     }
 
     @Override
-    public ResultadoDiagnostico escanear(String codigoRobot) {
+    public ResultadoDiagnostico escanear(String codigoRobot) throws DiagnosticoException {
         if (codigoRobot == null || codigoRobot.trim().isEmpty()) {
             throw new DiagnosticoException("El codigo del robot no puede estar vacio para el escaneo.");
         }

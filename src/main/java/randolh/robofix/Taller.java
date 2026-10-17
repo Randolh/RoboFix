@@ -3,6 +3,7 @@ package randolh.robofix;
 import randolh.robofix.diagnostico.AdaptadorEscaner;
 import randolh.robofix.diagnostico.ResultadoDiagnostico;
 import randolh.robofix.diagnostico.ServicioDiagnostico;
+import randolh.robofix.excepcion.ConfiguracionRobotException;
 import randolh.robofix.excepcion.DiagnosticoException;
 import randolh.robofix.excepcion.InventarioException;
 import randolh.robofix.inventario.Inventario;
@@ -46,6 +47,8 @@ public class Taller {
         } catch (DiagnosticoException e) {
             System.out.println("No se pudo reparar el robot: " + e.getMessage());
         } catch (InventarioException e) {
+            System.out.println("No se pudo reparar el robot: " + e.getMessage());
+        } catch (ConfiguracionRobotException e) {
             System.out.println("No se pudo reparar el robot: " + e.getMessage());
         }
     }

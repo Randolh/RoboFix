@@ -9,7 +9,14 @@ public class Main {
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
 
-        Robot robot = new Robot("RX-01", "Explorador", 80, "NORMAL");
+        Robot robot;
+        try {
+            robot = new Robot("RX-01", "Explorador", 80, "NORMAL");
+        } catch (ConfiguracionRobotException e) {
+            System.out.println("Error al inicializar el robot: " + e.getMessage());
+            teclado.close();
+            return;
+        }
 
         Taller taller1 = new Taller();
         Taller taller2 = new Taller();

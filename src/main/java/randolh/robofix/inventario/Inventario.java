@@ -26,7 +26,7 @@ public class Inventario {
         }
     }
 
-    public void descontar(String repuesto, int cantidad) {
+    public void descontar(String repuesto, int cantidad) throws InventarioException {
         if (repuesto == null || !repuestos.containsKey(repuesto)) {
             throw new InventarioException("El repuesto '" + repuesto + "' no existe en el inventario.");
         }

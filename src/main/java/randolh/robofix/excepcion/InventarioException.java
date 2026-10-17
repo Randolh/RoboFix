@@ -1,6 +1,6 @@
 package randolh.robofix.excepcion;
 
-public class InventarioException extends RuntimeException {
+public class InventarioException extends Exception {
 
     public InventarioException(String mensaje) {
         super(mensaje);

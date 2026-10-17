@@ -7,7 +7,7 @@ public enum ModoRobot {
     AHORRO,
     MANTENIMIENTO;
 
-    public static ModoRobot desdeTexto(String texto) {
+    public static ModoRobot desdeTexto(String texto) throws ConfiguracionRobotException {
         if (texto == null || texto.trim().isEmpty()) {
             throw new ConfiguracionRobotException("El modo de operacion no puede estar vacio.");
         }

@@ -12,13 +12,13 @@ public class Robot {
     private int energia;
     private ModoRobot modo;
 
-    public Robot(String codigo, String nombre, int energia, String modo) {
+    public Robot(String codigo, String nombre, int energia, String modo) throws ConfiguracionRobotException {
         this.codigo = codigo;
         this.nombre = nombre;
         actualizarConfiguracion(energia, modo);
     }
 
-    public Robot(String codigo, String nombre, int energia, ModoRobot modo) {
+    public Robot(String codigo, String nombre, int energia, ModoRobot modo) throws ConfiguracionRobotException {
         this.codigo = codigo;
         this.nombre = nombre;
         actualizarConfiguracion(energia, modo);
@@ -31,7 +31,7 @@ public class Robot {
         System.out.println("Modo: " + modo);
     }
 
-    public static void validarEnergia(int energia) {
+    public static void validarEnergia(int energia) throws ConfiguracionRobotException {
         if (energia < ENERGIA_MINIMA || energia > ENERGIA_MAXIMA) {
             throw new ConfiguracionRobotException(
                 "La energia debe estar en el intervalo de " + ENERGIA_MINIMA + " a " + ENERGIA_MAXIMA + ". Valor recibido: " + energia
@@ -39,20 +39,20 @@ public class Robot {
         }
     }
 
-    public static void validarModo(ModoRobot modo) {
+    public static void validarModo(ModoRobot modo) throws ConfiguracionRobotException {
         if (modo == null) {
             throw new ConfiguracionRobotException("El modo no puede ser nulo.");
         }
     }
 
-    public void actualizarConfiguracion(int nuevaEnergia, String nuevoModoTexto) {
+    public void actualizarConfiguracion(int nuevaEnergia, String nuevoModoTexto) throws ConfiguracionRobotException {
         validarEnergia(nuevaEnergia);
         ModoRobot nuevoModo = ModoRobot.desdeTexto(nuevoModoTexto);
         this.energia = nuevaEnergia;
         this.modo = nuevoModo;
     }
 
-    public void actualizarConfiguracion(int nuevaEnergia, ModoRobot nuevoModo) {
+    public void actualizarConfiguracion(int nuevaEnergia, ModoRobot nuevoModo) throws ConfiguracionRobotException {
         validarEnergia(nuevaEnergia);
         validarModo(nuevoModo);
         this.energia = nuevaEnergia;
@@ -71,7 +71,7 @@ public class Robot {
         return energia;
     }
 
-    public void setEnergia(int energia) {
+    public void setEnergia(int energia) throws ConfiguracionRobotException {
         validarEnergia(energia);
         this.energia = energia;
     }
@@ -80,12 +80,12 @@ public class Robot {
         return modo;
     }
 
-    public void setModo(ModoRobot modo) {
+    public void setModo(ModoRobot modo) throws ConfiguracionRobotException {
         validarModo(modo);
         this.modo = modo;
     }
 
-    public void setModo(String modo) {
+    public void setModo(String modo) throws ConfiguracionRobotException {
         this.modo = ModoRobot.desdeTexto(modo);
     }
 }
