@@ -3,6 +3,7 @@ package randolh.robofix;
 import java.util.Scanner;
 import randolh.robofix.excepcion.ConfiguracionRobotException;
 import randolh.robofix.robot.Robot;
+import randolh.robofix.robot.RobotMemento;
 
 public class Main {
 
@@ -21,9 +22,10 @@ public class Main {
         Taller taller1 = new Taller();
         Taller taller2 = new Taller();
 
+        RobotMemento configuracionGuardada = null;
         int opcion = 0;
 
-        while (opcion != 7) {
+        while (opcion != 7 && opcion != 10) {
             System.out.println("\n===== ROBOFIX =====");
             System.out.println("1. Ver robot");
             System.out.println("2. Diagnosticar robot");
@@ -32,6 +34,8 @@ public class Main {
             System.out.println("5. Ver inventario");
             System.out.println("6. Comparar inventarios");
             System.out.println("7. Salir");
+            System.out.println("8. Guardar configuracion");
+            System.out.println("9. Restaurar configuracion");
             System.out.print("Opcion: ");
 
             opcion = leerEntero(teclado, "Opcion invalida. Ingrese un numero: ");
@@ -78,7 +82,30 @@ public class Main {
                     break;
 
                 case 7:
+                case 10:
                     System.out.println("Cerrando RoboFix...");
+                    break;
+
+                case 8:
+                    try {
+                        configuracionGuardada = robot.guardar();
+                        System.out.println("Configuracion actual guardada exitosamente.");
+                    } catch (ConfiguracionRobotException e) {
+                        System.out.println("Error al guardar: " + e.getMessage());
+                    }
+                    break;
+
+                case 9:
+                    if (configuracionGuardada == null) {
+                        System.out.println("No existe ninguna configuracion guardada para restaurar.");
+                    } else {
+                        try {
+                            robot.restaurar(configuracionGuardada);
+                            System.out.println("Configuracion restaurada exitosamente.");
+                        } catch (ConfiguracionRobotException e) {
+                            System.out.println("Error al restaurar: " + e.getMessage());
+                        }
+                    }
                     break;
 
                 default:

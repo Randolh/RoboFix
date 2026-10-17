@@ -88,4 +88,17 @@ public class Robot {
     public void setModo(String modo) throws ConfiguracionRobotException {
         this.modo = ModoRobot.desdeTexto(modo);
     }
+
+    public RobotMemento guardar() throws ConfiguracionRobotException {
+        validarEnergia(this.energia);
+        validarModo(this.modo);
+        return new RobotMemento(this.energia, this.modo);
+    }
+
+    public void restaurar(RobotMemento memento) throws ConfiguracionRobotException {
+        if (memento == null) {
+            throw new ConfiguracionRobotException("No hay una configuracion valida para restaurar.");
+        }
+        actualizarConfiguracion(memento.getEnergia(), memento.getModo());
+    }
 }
