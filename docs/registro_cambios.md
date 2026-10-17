@@ -65,3 +65,12 @@ Resumen simple de los cambios realizados en el proyecto y el motivo de cada uno.
   - La clase `EscanerAntiguo` se mantuvo 100% intacta sin modificar ninguna linea.
   - `Taller` ahora usa el adaptador en lugar de llamar directamente al escaner o partir texto con barras (`|`).
 - **Por que:** Para cumplir con el desacoplamiento requerido: si el formato del escaner viejo cambia o viene roto, solo el adaptador se encarga de interpretarlo o avisar del error mediante `DiagnosticoException`, protegiendo el resto de la aplicacion (cumpliendo las pruebas P2 y P12).
+
+---
+
+### 9. Conversion a Checked Exceptions (Obligatorias por Compilador)
+- **Que se hizo:**
+  - Las excepciones `ConfiguracionRobotException`, `InventarioException` y `DiagnosticoException` ahora heredan directamente de `Exception`.
+  - Se agregaron las clausulas `throws` correspondientes en las firmas de los metodos.
+  - Los llamados en `Taller` y `Main` manejan obligatoriamente estas excepciones en bloques `try-catch`.
+- **Por que:** Para obligar al compilador a exigir el manejo explícito de errores donde se usen estos métodos, garantizando robustez total y evitando que cualquier error pase desapercibido.
