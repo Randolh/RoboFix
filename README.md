@@ -1,6 +1,6 @@
-# RoboFix - Taller de Refactorizacion y Patrones de Diseno en Java
+# RoboFix - Taller de Refactorizacion y Patrones de Diseño en Java
 
-Proyecto academico de refactorizacion de software y aplicacion de patrones de diseno GoF (Gang of Four) sobre una aplicacion de consola en Java para la gestion y reparacion de robots.
+Proyecto academico de refactorizacion de software y aplicacion de patrones de diseño GoF (Gang of Four) sobre una aplicacion de consola en Java para la gestion y reparacion de robots.
 
 ---
 
@@ -8,7 +8,7 @@ Proyecto academico de refactorizacion de software y aplicacion de patrones de di
 
 1. [Descripcion del Proyecto](#descripcion-del-proyecto)
 2. [Estructura del Proyecto](#estructura-del-proyecto)
-3. [Patrones de Diseno Implementados](#patrones-de-diseno-implementados)
+3. [Patrones de Diseño Implementados](#patrones-de-diseño-implementados)
 4. [Correcciones y Reglas de Negocio](#correcciones-y-reglas-de-negocio)
 5. [Clonacion y Ejecucion](#clonacion-y-ejecucion)
 6. [Opciones del Menu](#opciones-del-menu)
@@ -20,7 +20,7 @@ Proyecto academico de refactorizacion de software y aplicacion de patrones de di
 
 El proyecto original consistia en un unico archivo monolito (`Main.java`) con defectos funcionales, clases acopladas, inventarios inconsistentes, diagnosticos incompatibles y falta de validaciones.
 
-El objetivo fue rescatar y refactorizar el sistema organizandolo en paquetes desacoplados bajo Maven, aplicando tres patrones de diseno fundamentales (Singleton, Adapter y Memento), validando las reglas de negocio e integrando un manejo robusto de excepciones sin alterar las bibliotecas externas simuladas (`EscanerAntiguo`).
+El objetivo fue rescatar y refactorizar el sistema organizandolo en paquetes desacoplados bajo Maven, aplicando tres patrones de diseño fundamentales (Singleton, Adapter y Memento), validando las reglas de negocio e integrando un manejo robusto de excepciones sin alterar las bibliotecas externas simuladas (`EscanerAntiguo`).
 
 ---
 
@@ -63,7 +63,7 @@ RoboFix/
 
 ---
 
-## Patrones de Diseno Implementados
+## Patrones de Diseño Implementados
 
 ### 1. Patron Singleton (Modulo de Inventario)
 - **Problema previo:** Cada instancia de `Taller` instanciaba un `new Inventario()`, generando inventarios duplicados e inconsistentes en memoria.
@@ -157,7 +157,7 @@ Todos los documentos requeridos por la guia de entrega se encuentran redactados 
 1. **Diagnostico Inicial y Defectos:**
    - [docs/pruebas_iniciales.md](docs/pruebas_iniciales.md): Respuestas a las preguntas de exploracion de codigo y detalle de causas y consecuencias de los defectos detectados.
 2. **Informe de Patrones y Conclusion Tecnica:**
-   - [docs/informe_patrones_implementados.md](docs/informe_patrones_implementados.md): Justificacion de cada patron implementado, mejoras en el diseno y limitaciones remanentes del aplicativo.
+   - [docs/informe_patrones_implementados.md](docs/informe_patrones_implementados.md): Justificacion de cada patron implementado, mejoras en el diseño y limitaciones remanentes del aplicativo.
 3. **Pruebas de Aceptacion (P1 a P12):**
    - [docs/pruebas_de_aceptacion.md](docs/pruebas_de_aceptacion.md): Matriz de pruebas de aceptacion, salidas de consola y capturas de evidencia embebidas para cada escenario.
 4. **Registro de Cambios:**
